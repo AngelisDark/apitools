@@ -25,12 +25,12 @@ for choice in input('Enter choice (eg.1,2,3): ').split(','):
     except:
         print('Enter a valid input!')
         sys.exit(0)
-    if funcs[int(choice)-1] == 'all':
+    if funcs[ch-1] == 'all':
         url = f'http://ip-api.com/json/{query}?fields=status,message,continent,continentCode,country,countryCode,region,regionName,city,district,zip,lat,lon,timezone,currency,isp,org,as,asname,reverse,mobile,proxy,hosting,query'
         k = 1
         break
     else:
-        choices.append(int(choice))
+        choices.append(ch)
 
 
 if not k==1:
@@ -39,6 +39,7 @@ if not k==1:
     url += 'query,status,message'
 
 resps = json.loads(requests.get(url).text)
+print()
 
 for resp in resps:
     print(f'\t{resp}: {resps[resp]}')
