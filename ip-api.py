@@ -20,6 +20,11 @@ choices = []
 k = 0
 
 for choice in input('Enter choice (eg.1,2,3): ').split(','):
+    try:
+        ch = int(choice)
+    except:
+        print('Enter a valid input!')
+        sys.exit(0)
     if funcs[int(choice)-1] == 'all':
         url = f'http://ip-api.com/json/{query}?fields=status,message,continent,continentCode,country,countryCode,region,regionName,city,district,zip,lat,lon,timezone,currency,isp,org,as,asname,reverse,mobile,proxy,hosting,query'
         k = 1
